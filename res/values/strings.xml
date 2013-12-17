@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">D338</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_simple_list1_">SimpleList1_Activity</string>
+    <string name="title_activity_simple_list2_">SimpleList2_Activity</string>
+    <string name="title_activity_custom_list_">CustomList_Activity</string>
+    <string name="title_activity_article_viewer">Article_viewer</string>
+    <string name="title_activity_write">WriteActivity</string>
+
+</resources>

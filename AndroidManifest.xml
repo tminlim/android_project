@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.nhnnext.d338"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="org.nhnnext.d338.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.nhnnext.d338.SimpleList1_Activity"
+            android:label="@string/title_activity_simple_list1_" >
+        </activity>
+        <activity
+            android:name="org.nhnnext.d338.SimpleList2_Activity"
+            android:label="@string/title_activity_simple_list2_" >
+        </activity>
+        <activity
+            android:name="org.nhnnext.d338.CustomList_Activity"
+            android:label="@string/title_activity_custom_list_" >
+        </activity>
+        <activity
+            android:name="org.nhnnext.d338.Article_viewer"
+            android:label="@string/title_activity_article_viewer" >
+        </activity>
+        <activity
+            android:name="org.nhnnext.d338.WriteActivity"
+            android:label="@string/title_activity_write" >
+        </activity>
+    </application>
+
+</manifest>
