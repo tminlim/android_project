@@ -90,7 +90,7 @@ public class Dao {
 	}
 
 	public void insertJsonData(String jsonData) {
-		Log.i("hi", "hi");
+
 		int articleNumber;
 		String title;
 		String writer;
@@ -98,6 +98,8 @@ public class Dao {
 		String content;
 		String writeDate;
 		String imgName;
+		
+		FileDownloader fileDownloader = new FileDownloader(context);
 		
 		try {
 			JSONArray jArr = new JSONArray(jsonData);
@@ -125,6 +127,7 @@ public class Dao {
 					Log.e("test", "DB ERR!-"+e);
 					e.printStackTrace();
 				}
+				fileDownloader.downFile("http://10.73.44.93/~stu11/image/" + imgName, imgName);
 			}
 		}	catch(JSONException e) {
 			Log.e("test", "JSON ERR! -"+e.getMessage());

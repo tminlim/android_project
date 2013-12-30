@@ -6,7 +6,9 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -31,23 +33,59 @@ public class SimpleList1_Activity  extends Activity implements OnClickListener, 
 		Button buWrite = (Button)findViewById(R.id.main_button_write);
 		Button buRefresh = (Button)findViewById(R.id.main_button_refresh);
 //		
-		
-		mainListView1 = (ListView)findViewById(R.id.listview_simplelist1);
-				
 		buWrite.setOnClickListener(this);
 		buRefresh.setOnClickListener(this);
+		
+		mainListView1 = (ListView)findViewById(R.id.listview_simplelist1);
+		
 
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		refreshData();
+		listVew();
+		
+	};
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	private void listVew() {
+		// TODO Auto-generated method stub
 		Dao dao = new Dao(getApplicationContext());
-		String testJsonData = dao.getJsonTestData();
-		Log.i("json", testJsonData);
-		dao.insertJsonData(testJsonData);
-
 		articleList = dao.getArticleList();
-		Log.i("test", "ttt");
+		
 		CustomAdapter customAdapter = new CustomAdapter(this, R.layout.customlist_row, articleList);
 		mainListView1.setAdapter(customAdapter);
 		mainListView1.setOnItemClickListener(this);
-		Log.i("test", "ttt");
+		
+	}
+
+	private final Handler handler = new Handler();
+	
+	private void refreshData() {
+		new Thread() {
+			// TODO Auto-generated method stub
+			public void run(){
+				Proxy proxy = new Proxy();
+				String jsonData = proxy.getJSON();	
+				
+				Dao dao = new Dao(getApplicationContext());
+				dao.insertJsonData(jsonData);
+				
+				handler.post(new Runnable() {
+					
+					@Override
+					public void run() {
+						listVew();
+					}
+				});
+			}
+		}.start();
 	}
 
 
@@ -58,6 +96,9 @@ public class SimpleList1_Activity  extends Activity implements OnClickListener, 
 		case R.id.main_button_write:
 			Intent writeActivityIntent = new Intent(this, WriteActivity.class);
 			startActivity(writeActivityIntent);
+			break;
+		case R.id.main_button_refresh:
+			refreshData();
 			break;
 		}
 		
@@ -72,7 +113,5 @@ public class SimpleList1_Activity  extends Activity implements OnClickListener, 
 		
 		intent.putExtra("ArticleNumber", articleList.get(position).getArticleNumber()+"");
 		startActivity(intent);
-		
-		
 	}
 }

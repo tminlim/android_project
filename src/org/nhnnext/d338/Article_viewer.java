@@ -1,10 +1,13 @@
 package org.nhnnext.d338;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Menu;
@@ -36,13 +39,20 @@ public class Article_viewer extends Activity {
 		tvContent.setText(article.getContent());
 		tvWriterDate.setText(article.getWriteDate());
 		
-		try {
-			InputStream ims = getApplicationContext().getAssets().open(article.getImgName());
-			Drawable d = Drawable.createFromStream(ims, null);
-			ivImage.setImageDrawable(d);
-		} 
-		catch(IOException e) {
-			Log.e("ERROR", "ERROR:"+e);
+//		try {
+//			InputStream ims = getApplicationContext().getAssets().open(article.getImgName());
+//			Drawable d = Drawable.createFromStream(ims, null);
+//			ivImage.setImageDrawable(d);
+//		} 
+//		catch(IOException e) {
+//			Log.e("ERROR", "ERROR:"+e);
+//		}
+		String img_path = getApplicationContext().getFilesDir().getPath() + "/" +article.getImgName();
+		File img_load_path = new File(img_path);
+		
+		if (img_load_path.exists()) {
+			Bitmap bitmap = BitmapFactory.decodeFile(img_path);
+			ivImage.setImageBitmap(bitmap);
 		}
 	}
 

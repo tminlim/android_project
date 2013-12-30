@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,16 +41,23 @@ public class CustomAdapter extends ArrayAdapter<Article> {
 		Article article = list.get(position);
 		
 		ImageView imageView = (ImageView) row.findViewById(R.id.custom_row_imageView1);  
-		TextView title = (TextView) row.findViewById(R.id.textView555);
-		TextView text2 = (TextView) row.findViewById(R.id.textView2);
+		TextView tvTitle = (TextView) row.findViewById(R.id.textView555);
+		TextView tvContent = (TextView) row.findViewById(R.id.textView2);
 			
 //		Log.i("image name", article.getImgName() + " p name : " + context.getPackageName());
-		title.setText(article.getTitle());
-		text2.setText(article.getArticleNumber() + "");
+		tvTitle.setText(article.getTitle());
+		tvContent.setText(article.getArticleNumber() + "");
 		
-		int resID = context.getResources().getIdentifier(article.getImgName(), "drawable", context.getPackageName());
-		Log.i("image id", ""+resID);
-		imageView.setImageResource(resID);
+		String img_path = context.getFilesDir().getPath() + "/" +article.getImgName();
+		File img_load_pathFile = new File(img_path);
+		
+		if (img_load_pathFile.exists()) {
+			Bitmap bitmap = BitmapFactory.decodeFile(img_path);
+			imageView.setImageBitmap(bitmap);
+		}
+////		int resID = context.getResources().getIdentifier(article.getImgName(), "drawable", context.getPackageName());
+//		Log.i("image id", ""+resID);
+//		imageView.setImageResource(resID);
 	
 		return row;
 	}
