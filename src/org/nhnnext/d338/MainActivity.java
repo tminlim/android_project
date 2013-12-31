@@ -29,9 +29,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		button2.setOnClickListener(this);
 		button3.setOnClickListener(this);
 		
-		Dao dao = new Dao(getApplicationContext());
-		String testJsonData = dao.getJsonTestData();
-		dao.insertJsonData(testJsonData);
+//		Dao dao = new Dao(getApplicationContext());
+//		String testJsonData = dao.getJsonTestData();
+//		dao.insertJsonData(testJsonData);
 		
 	}
 	@Override
