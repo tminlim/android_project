@@ -38,7 +38,7 @@ public class SimpleList1_Activity extends Activity implements OnClickListener,
 		setContentView(R.layout.activity_simple_list1_);
 
 		sideNavigationView = (SideNavigationView) findViewById(R.id.side_navigation_view);
-		sideNavigationView.setMenuItems(R.menu.main);
+		sideNavigationView.setMenuItems(R.menu.side_menu);
 		sideNavigationView.setMenuClickCallback(sideNavigationCallback);
 		sideNavigationView.setMode(Mode.LEFT);
 		Log.i("check in", "nullpointer");

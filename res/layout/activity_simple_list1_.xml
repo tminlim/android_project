@@ -4,8 +4,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-
-    <!-- <Button
+    <!--
+    <Button
         android:id="@+id/main_button_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,21 +22,19 @@
         android:layout_weight="1"
         android:text="Refresh" />
         android:layout_weight="1"
-        android:text="Write" /> -->
-
+        android:text="Write" />
+    -->
 
     <ListView
         android:id="@+id/listview_simplelist1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/main_button_write" >
+        android:layout_alignParentLeft="true">
     </ListView>
 
-    
     <com.devspark.sidenavigation.SideNavigationView
         android:id="@+id/side_navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </com.devspark.sidenavigation.SideNavigationView>
+        android:layout_height="match_parent" />
+
 </RelativeLayout>

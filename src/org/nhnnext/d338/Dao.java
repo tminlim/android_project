@@ -18,7 +18,7 @@ public class Dao {
 	public Dao(Context context) 
 	{
 		this.context = context;
-
+//aaaaaa
 		database = context.openOrCreateDatabase("LocalDATA",
 				SQLiteDatabase.CREATE_IF_NECESSARY, null);
 		try {
