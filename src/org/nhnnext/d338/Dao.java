@@ -24,13 +24,13 @@ public class Dao {
 		try {
 			String sql = "CREATE TABLE IF NOT EXISTS Articles("
 					+ "ID integer primary key autoincrement, "
-					+ "ArticleNumber integer UNIQUE not null, "
+					+ "ArticleNumber integer not null, "
 					+ "Title text not null, "
 					+ "WriterName text not null, "
 					+ "WriteID text not null, "
 					+ "Content text not null, "
 					+ "WriteDate text not null, " 
-					+ "ImgName UNIQUE not null); ";
+					+ "ImgName); ";
 			
 			
 			Log.i("table", sql);

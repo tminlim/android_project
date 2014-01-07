@@ -25,7 +25,7 @@ import android.util.Log;
 	                       
 	                        FileInputStream fis = new FileInputStream(filePath);
 	                       
-	                        URL url = new URL("http://10.73.44.93/~stu11/upload.php");
+	                        URL url = new URL("http://10.73.38.167:8080/board/write");
 	                       
 	                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	                       
@@ -49,15 +49,15 @@ import android.util.Log;
 	                       
 	                       
 	                        dos.write( getPostData("title",article.getTitle()).getBytes("UTF-8") );
-	                        dos.write( getPostData("writer",article.getWriter()).getBytes("UTF-8") );
-	                        dos.write( getPostData("id",article.getId()).getBytes("UTF-8") );
-	                        dos.write( getPostData("content",article.getContent()).getBytes("UTF-8") );
-	                        dos.write( getPostData("writeDate",article.getWriteDate()).getBytes("UTF-8") );
-	                        dos.write( getPostData("imgName",article.getImgName()).getBytes("UTF-8") );
+//	                        dos.write( getPostData("writer",article.getWriter()).getBytes("UTF-8") );
+//	                        dos.write( getPostData("id",article.getId()).getBytes("UTF-8") );
+	                        dos.write( getPostData("contents",article.getContent()).getBytes("UTF-8") );
+//	                        dos.write( getPostData("writeDate",article.getWriteDate()).getBytes("UTF-8") );
+	                        dos.write( getPostData("file",article.getImgName()).getBytes("UTF-8") );
 	                   
 	                   
 	                        dos.writeBytes(twoHyphens + boundary + lineEnd);
-	                        dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + article.getImgName() + "\"" + lineEnd);
+	                        dos.writeBytes("Content-Disposition: form-data; name=\"file\";filename=\"" + article.getImgName() + "\"" + lineEnd);
 	                        dos.writeBytes(lineEnd);
 	 
 	 
