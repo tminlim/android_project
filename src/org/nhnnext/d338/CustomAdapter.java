@@ -48,12 +48,17 @@ public class CustomAdapter extends ArrayAdapter<Article> {
 		tvTitle.setText(article.getTitle());
 		tvContent.setText(article.getArticleNumber() + "");
 		
-		String img_path = context.getFilesDir().getPath() + "/" +article.getImgName();
-		File img_load_pathFile = new File(img_path);
+		String path_filename = article.getImgName();
 		
-		if (img_load_pathFile.exists()) {
-			Bitmap bitmap = BitmapFactory.decodeFile(img_path);
-			imageView.setImageBitmap(bitmap);
+		if (path_filename!= null) {
+			String img_path = context.getFilesDir().getPath() + "/" +path_filename;
+			File img_load_pathFile = new File(img_path);
+			
+			if (img_load_pathFile.exists()) {
+				Bitmap bitmap = BitmapFactory.decodeFile(img_path);
+				imageView.setImageBitmap(bitmap);
+		}
+		
 		}
 ////		int resID = context.getResources().getIdentifier(article.getImgName(), "drawable", context.getPackageName());
 //		Log.i("image id", ""+resID);

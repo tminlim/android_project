@@ -12,7 +12,7 @@ import android.util.Log;
 public class Proxy {
 	public String getJSON(){
 		try {
-		URL url = new URL("http://10.73.44.93/~stu11/loadData.php");
+		URL url = new URL("http://10.73.38.167:8080/board/list.json");
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		
 		conn.setConnectTimeout(10 * 1000);

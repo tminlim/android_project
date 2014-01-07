@@ -33,6 +33,9 @@ public class WriteActivity extends Activity implements OnClickListener {
 	private ImageButton ibPhoto;
 	private Button buUpload;
 
+	private String filePath;
+	private String fileNames="";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,8 +93,8 @@ public class WriteActivity extends Activity implements OnClickListener {
 							Locale.KOREA).format(new Date());
 
 					Article article = new Article(0, etTitle.getText()
-							.toString(), etWriter.getText().toString(), ID,
-							etContent.getText().toString(), DATE, fileName);
+							.toString(), 
+							etContent.getText().toString(), fileNames);
 					
 					ProxyUp proxyUp = new ProxyUp();
 					proxyUp.uploadArticle(article, filePath);
@@ -112,8 +115,7 @@ public class WriteActivity extends Activity implements OnClickListener {
 
 	}
 
-	private String filePath;
-	private String fileName;
+
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -124,7 +126,7 @@ public class WriteActivity extends Activity implements OnClickListener {
 			if (requestCode == REQUEST_PHOTO_ALBUM) {
 				Uri uri = getRealPathUri(data.getData());
 				filePath = uri.toString();
-				fileName = uri.getLastPathSegment();
+				fileNames = uri.getLastPathSegment();
 
 				Bitmap bitmap = BitmapFactory.decodeFile(filePath);
 				ibPhoto.setImageBitmap(bitmap);

@@ -3,20 +3,14 @@ package org.nhnnext.d338;
 public class Article {
 	private int articleNumber;
 	private String title;
-	private String writer;
-	private String id;
-	private String content;
-	private String writeDate;
-	private String imgName;
+	private String contents;
+	private String filename;
 	
-	public Article(int articleNumber, String title, String writer, String id, String content, String writeDate, String imgName) {
+	public Article(int articleNumber, String title, String content, String imgName) {
 		this.articleNumber = articleNumber;
 		this.title = title;
-		this.writer = writer;
-		this.id = id;
-		this.content = content;
-		this.writeDate = writeDate;
-		this.imgName = imgName;
+		this.contents = content;
+		this.filename = imgName;
 	}
 
 	public int getArticleNumber() {
@@ -35,44 +29,20 @@ public class Article {
 		this.title = title;
 	}
 
-	public String getWriter() {
-		return writer;
-	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getContent() {
-		return content;
+		return contents;
 	}
 
 	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getWriteDate() {
-		return writeDate;
-	}
-
-	public void setWriteDate(String writeDate) {
-		this.writeDate = writeDate;
+		this.contents = content;
 	}
 
 	public String getImgName() {
-		return imgName;
+		return filename;
 	}
 
 	public void setImgName(String imgName) {
-		this.imgName = imgName;
+		this.filename = imgName;
 	}
 	
 }

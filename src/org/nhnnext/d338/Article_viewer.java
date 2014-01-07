@@ -35,9 +35,7 @@ public class Article_viewer extends Activity {
 		Article article = dao.getArticleByArticleNumber(Integer.parseInt(articleNumber));
 		
 		tvTitle.setText(article.getTitle());
-		tvWriter.setText(article.getWriter());
 		tvContent.setText(article.getContent());
-		tvWriterDate.setText(article.getWriteDate());
 		
 //		try {
 //			InputStream ims = getApplicationContext().getAssets().open(article.getImgName());
