@@ -58,10 +58,9 @@ public class Dao {
 ]
  */
 	public void insertJsonData(String jsonData) {
-	
-		jsonData = jsonData.replace("{\"list\":", "");
-		jsonData = jsonData.replace("}]}]}", "}]}]");
-		
+		if (jsonData == null) {
+			return;
+		}
 		
 		Log.i("test", "jsonData:" + jsonData );
 		int articleNumber;
@@ -71,22 +70,10 @@ public class Dao {
 		
 		FileDownloader fileDownloader = new FileDownloader(context);
 		
-		
-		
-		
 		try {
-			
-			/*
-			[
-			 {"id":10,"title":"haha","contents":"들어가라.","filename":"sdd"},
-			 {"id":10,"title":"haha","contents":"들어가라.","filename":"sdd"},
-			 {"id":10,"title":"haha","contents":"들어가라.","filename":"sdd"},
-			 {"id":10,"title":"haha","contents":"들어가라.","filename":"sdd"},
-			 {"id":13,"title":"j","contents":"j","filename":"asdddd"}
-			]
-			 */
-			
-			JSONArray jArr = new JSONArray(jsonData);
+
+			JSONObject jsonBoards =  new JSONObject(jsonData);
+			JSONArray jArr = jsonBoards.getJSONArray("list");
 			
 			for (int i = 0; i < jArr.length(); i++) 
 			{
@@ -103,8 +90,6 @@ public class Dao {
 				contents = jObj.getString("contents");
 				filename = jObj.getString("filename");
 				
-				
-				
 				Log.i("test", "!!!ArticleNumber:" +articleNumber +"Title:" +title);
 				
 				String sql = "INSERT INTO Articles(ArticleNumber, Title, Content, filename)"
@@ -115,7 +100,7 @@ public class Dao {
 					Log.e("test", "DB ERR!-"+e);
 					e.printStackTrace();
 				}
-				fileDownloader.downFile("http://10.73.38.167:8080/images/" + filename, filename);
+				fileDownloader.downFile("http://10.73.38.240:8080/images/" + filename, filename);
 			}
 		}	catch(JSONException e) {
 			Log.e("test", "JSON ERR! -"+e.getMessage());
@@ -161,7 +146,7 @@ public class Dao {
 		
 		
 		try{
-			String sql = "SELECT * FROM Articles WHERE id = "+articleNumber+";";
+			String sql = "SELECT * FROM Articles WHERE ArticleNumber = "+articleNumber+";";
 			Cursor cursor = database.rawQuery(sql, null);
 			
 			cursor.moveToNext(); 

@@ -25,7 +25,7 @@ import android.util.Log;
 	                       
 	                        FileInputStream fis = new FileInputStream(filePath);
 	                       
-	                        URL url = new URL("http://10.73.38.167:8080/board/write");
+	                        URL url = new URL("http://10.73.38.240:8080/board/write");
 	                       
 	                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	                       

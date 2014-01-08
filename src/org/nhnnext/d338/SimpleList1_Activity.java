@@ -61,7 +61,6 @@ public class SimpleList1_Activity extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 		super.onResume();
-
 		refreshData();
 		listVew();
 
@@ -89,7 +88,6 @@ public class SimpleList1_Activity extends Activity implements OnClickListener,
 
 	private void refreshData() {
 		new Thread() {
-			// TODO Auto-generated method stub
 			public void run() {
 				Proxy proxy = new Proxy();
 				String jsonData = proxy.getJSON();
