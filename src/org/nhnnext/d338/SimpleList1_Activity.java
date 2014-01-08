@@ -22,8 +22,6 @@ import com.devspark.sidenavigation.ISideNavigationCallback;
 import com.devspark.sidenavigation.SideNavigationView;
 import com.devspark.sidenavigation.SideNavigationView.Mode;
 
-//public class SimpleList1_Activity extends ListActivity implements OnClickListener, OnItemClickListener{
-
 public class SimpleList1_Activity extends Activity implements OnClickListener,
 		OnItemClickListener {
 
@@ -45,7 +43,6 @@ public class SimpleList1_Activity extends Activity implements OnClickListener,
 
 		// Button buWrite = (Button)findViewById(R.id.main_button_write);
 		// Button buRefresh = (Button)findViewById(R.id.main_button_refresh);
-		// //
 		// buWrite.setOnClickListener(this);
 		// buRefresh.setOnClickListener(this);
 
